@@ -1,0 +1,55 @@
+Text-to-3D/
+
+├── backend/
+
+│   ├── app.py
+
+│   ├── model.py
+
+│   ├── mesh_generation.py
+
+│   ├── blender_script.py
+
+│   ├── requirements.txt
+
+├── frontend/
+
+├── models/
+
+│   ├── shap_e_weights.pth    # Pre-trained Point-E weights
+
+├── generated_meshes/          # Stores generated OBJ and GLTF files
+
+├── env_open3d/                # Open3D environment from Phase 1
+
+├── shap-e/                   # Point-E library from Phase 1
+
+frontend/
+
+├── public/
+
+│   └── index.html
+
+├── src/
+
+│   ├── components/
+
+│   │   └── ThreeViewer.jsx
+
+│   ├── App.jsx
+
+│   ├── App.css
+
+│   ├── index.css # Tailwind directives
+
+│   ├── main.jsx
+
+├── index.html
+
+├── package.json
+
+└── tailwind.config.js
+
+└── postcss.config.js
+
+└── vite.config.js
