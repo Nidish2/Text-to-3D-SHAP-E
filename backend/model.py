@@ -9,8 +9,6 @@ from shap_e.diffusion.gaussian_diffusion import diffusion_from_config
 from shap_e.models.download import load_model, load_config
 from shap_e.util.notebooks import decode_latent_mesh
 
-# Import the mesh_generation module for saving meshes using relative import
-from .mesh_generation import save_mesh_as_obj
 
 # Rest of the file remains unchanged
 # Configure logging

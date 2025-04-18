@@ -238,3 +238,20 @@ RuntimeError: Failed to generate mesh: Failed to generate mesh on both primary d
 2025-04-18 13:05:03,008 - INFO - Generating mesh on xpu with memory optimization
 2025-04-18 13:05:03,181 - INFO - Cleared XPU cache before mesh decoding
 2025-04-18 13:05:03,181 - INFO - Using memory-optimized decoding approach for XPU
+2025-04-18 13:28:17,862 - INFO - Initializing Text-to-3D model...
+2025-04-18 13:28:18,061 - INFO - Intel XPU detected, using XPU
+2025-04-18 13:28:18,061 - INFO - XPU device count: 1
+2025-04-18 13:28:18,068 - INFO - XPU:0 - Intel(R) Arc(TM) Graphics
+2025-04-18 13:28:18,068 - INFO - XPU:0 - Allocated memory: 0.00 GB
+2025-04-18 13:28:18,069 - INFO - XPU:0 - Reserved memory: 0.00 GB
+2025-04-18 13:28:18,069 - INFO - Loading models on xpu...
+2025-04-18 13:28:39,945 - INFO - Text300M model loaded successfully
+2025-04-18 13:28:39,945 - INFO - Loading diffusion process...
+2025-04-18 13:28:39,959 - INFO - Diffusion process loaded successfully
+2025-04-18 13:28:39,960 - INFO - Generating mesh with memory optimization...
+2025-04-18 13:28:39,961 - INFO - Generating mesh for prompt: 'a simple cube'
+2025-04-18 13:28:39,961 - INFO - Running on XPU - optimizing parameters
+2025-04-18 13:28:40,098 - INFO - Cleared XPU cache before generation
+2025-04-18 13:30:29,946 - INFO - Generating mesh on xpu with memory optimization
+2025-04-18 13:30:30,205 - INFO - Cleared XPU cache before mesh decoding
+2025-04-18 13:30:30,205 - INFO - Using memory-optimized decoding approach for XPU
