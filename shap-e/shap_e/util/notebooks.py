@@ -44,34 +44,37 @@ def create_pan_cameras(size: int, device: torch.device) -> DifferentiableCameraB
 
 
 @torch.no_grad()
-def decode_latent_mesh(
+def decode_latent_images(
     xm: Union[Transmitter, VectorDecoder],
     latent: torch.Tensor,
-    grid_size: int = 128,  # Default value, adjustable
-) -> TorchMesh:
+    cameras: DifferentiableCameraBatch,
+    rendering_mode: str = "stf",
+):
     decoded = xm.renderer.render_views(
-        AttrDict(cameras=create_pan_cameras(2, latent.device)),
+        AttrDict(cameras=cameras),
         params=(xm.encoder if isinstance(xm, Transmitter) else xm).bottleneck_to_params(
             latent[None]
         ),
-        options=AttrDict(rendering_mode="stf", render_with_direction=False, grid_size=grid_size),
+        options=AttrDict(rendering_mode=rendering_mode, render_with_direction=False),
     )
-    return decoded.raw_meshes[0]
+    arr = decoded.channels.clamp(0, 255).to(torch.uint8)[0].cpu().numpy()
+    return [Image.fromarray(x) for x in arr]
+
 
 @torch.no_grad()
 def decode_latent_mesh(
     xm: Union[Transmitter, VectorDecoder],
     latent: torch.Tensor,
-    grid_size: int = 128,  # Default value, adjustable
 ) -> TorchMesh:
     decoded = xm.renderer.render_views(
-        AttrDict(cameras=create_pan_cameras(2, latent.device)),
+        AttrDict(cameras=create_pan_cameras(2, latent.device)),  # lowest resolution possible
         params=(xm.encoder if isinstance(xm, Transmitter) else xm).bottleneck_to_params(
             latent[None]
         ),
-        options=AttrDict(rendering_mode="stf", render_with_direction=False, grid_size=grid_size),
+        options=AttrDict(rendering_mode="stf", render_with_direction=False),
     )
     return decoded.raw_meshes[0]
+
 
 def gif_widget(images):
     writer = io.BytesIO()

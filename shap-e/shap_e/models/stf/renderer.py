@@ -81,8 +81,6 @@ class STFRenderer(Renderer, STFRendererBase):
     ) -> AttrDict:
         params = self.update(params)
         options = AttrDict() if not options else AttrDict(options)
-        
-        grid_size = options.get('grid_size', self.grid_size)
 
         sdf_fn = partial(self.sdf.forward_batched, params=subdict(params, "sdf"))
         tf_fn = partial(self.tf.forward_batched, params=subdict(params, "tf"))
@@ -95,7 +93,7 @@ class STFRenderer(Renderer, STFRendererBase):
             tf_fn=tf_fn,
             nerstf_fn=nerstf_fn,
             volume=self.volume,
-            grid_size=grid_size,
+            grid_size=self.grid_size,
             channel_scale=self.channel_scale,
             texture_channels=self.texture_channels,
             ambient_color=self.ambient_color,

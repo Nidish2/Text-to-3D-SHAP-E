@@ -1,0 +1,240 @@
+2025-04-17 21:39:39,103 - INFO - Initializing Text-to-3D model...
+2025-04-17 21:39:39,339 - INFO - Intel XPU detected, using XPU
+2025-04-17 21:39:39,339 - INFO - XPU device count: 1
+2025-04-17 21:39:39,344 - INFO - XPU:0 - Intel(R) Arc(TM) Graphics
+2025-04-17 21:39:39,344 - INFO - Loading Text300M model...
+2025-04-17 21:40:01,864 - INFO - Text300M model loaded successfully
+2025-04-17 21:40:01,879 - INFO - Loading diffusion process...
+2025-04-17 21:40:01,879 - INFO - Diffusion process loaded successfully
+2025-04-17 21:40:01,879 - INFO - Generating 3D mesh for prompt: 'a simple cube'
+2025-04-17 21:40:01,879 - INFO - Generating mesh...
+2025-04-17 21:40:01,894 - INFO - Generating mesh for prompt: 'a simple cube'
+2025-04-17 21:41:44,521 - INFO - Attempting mesh generation on xpu
+2025-04-17 21:41:48,495 - WARNING - Mesh generation on xpu failed: Native API failed. Native API returns: 2147483646 (UR_RESULT_ERROR_UNKNOWN)
+2025-04-17 21:41:48,495 - INFO - Falling back to CPU for mesh generation
+2025-04-17 21:41:48,509 - ERROR - CPU fallback also failed: UR error
+2025-04-17 21:41:48,510 - ERROR - Mesh generation failed: Failed to generate mesh on both primary device and CPU fallback: UR error
+2025-04-17 21:41:48,510 - ERROR - Traceback (most recent call last):
+  File "C:\Users\nidis\Documents\Gen AI\Text-to-3D-SHAP-E\backend\model.py", line 179, in generate_mesh
+    decoded = decode_latent_mesh(self.xm, latent)
+  File "C:\Users\nidis\miniconda3\envs\env\lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "c:\users\nidis\documents\gen ai\text-to-3d-shap-e\shap-e\shap_e\util\notebooks.py", line 69, in decode_latent_mesh
+    decoded = xm.renderer.render_views(
+  File "c:\users\nidis\documents\gen ai\text-to-3d-shap-e\shap-e\shap_e\models\nerstf\renderer.py", line 243, in render_views
+    output = render_views_from_stf(
+  File "c:\users\nidis\documents\gen ai\text-to-3d-shap-e\shap-e\shap_e\models\stf\renderer.py", line 217, in render_views_from_stf
+    raw_mesh = marching_cubes(field, volume.bbox_min, volume.bbox_max - volume.bbox_min)
+  File "c:\users\nidis\documents\gen ai\text-to-3d-shap-e\shap-e\shap_e\rendering\mc.py", line 93, in marching_cubes
+    selected_tris = global_tris.reshape(-1, 3)[local_masks.reshape(-1)]
+RuntimeError: Native API failed. Native API returns: 2147483646 (UR_RESULT_ERROR_UNKNOWN)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nidis\Documents\Gen AI\Text-to-3D-SHAP-E\backend\model.py", line 200, in generate_mesh
+    cpu_latent = latents[0].detach().clone().to(device=self.cpu_device, dtype=torch.float32)
+RuntimeError: UR error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nidis\Documents\Gen AI\Text-to-3D-SHAP-E\backend\model.py", line 220, in generate_mesh
+    raise RuntimeError(f"Failed to generate mesh on both primary device and CPU fallback: {str(cpu_error)}")
+RuntimeError: Failed to generate mesh on both primary device and CPU fallback: UR error
+
+2025-04-17 21:41:48,510 - ERROR - Error generating 3D model: Failed to generate mesh: Failed to generate mesh on both primary device and CPU fallback: UR error
+2025-04-17 21:42:18,977 - INFO - Initializing Text-to-3D model...
+2025-04-17 21:42:19,287 - INFO - Intel XPU detected, using XPU
+2025-04-17 21:42:19,287 - INFO - XPU device count: 1
+2025-04-17 21:42:19,297 - INFO - XPU:0 - Intel(R) Arc(TM) Graphics
+2025-04-17 21:42:19,297 - INFO - Loading Text300M model...
+2025-04-17 21:42:37,027 - INFO - Text300M model loaded successfully
+2025-04-17 21:42:37,027 - INFO - Loading diffusion process...
+2025-04-17 21:42:37,027 - INFO - Diffusion process loaded successfully
+2025-04-17 21:42:37,027 - INFO - Generating mesh...
+2025-04-17 21:42:37,027 - INFO - Generating mesh for prompt: 'a simple cube'
+2025-04-17 21:44:10,006 - INFO - Attempting mesh generation on xpu
+2025-04-17 21:44:14,484 - WARNING - Mesh generation on xpu failed: Native API failed. Native API returns: 2147483646 (UR_RESULT_ERROR_UNKNOWN)
+2025-04-17 21:44:14,485 - INFO - Falling back to CPU for mesh generation
+2025-04-17 21:44:14,485 - ERROR - CPU fallback also failed: UR error
+2025-04-17 21:44:14,485 - ERROR - Mesh generation failed: Failed to generate mesh on both primary device and CPU fallback: UR error
+2025-04-17 21:44:14,495 - ERROR - Traceback (most recent call last):
+  File "C:\Users\nidis\Documents\Gen AI\Text-to-3D-SHAP-E\backend\model.py", line 179, in generate_mesh
+    decoded = decode_latent_mesh(self.xm, latent)
+  File "C:\Users\nidis\miniconda3\envs\env\lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "c:\users\nidis\documents\gen ai\text-to-3d-shap-e\shap-e\shap_e\util\notebooks.py", line 69, in decode_latent_mesh
+    decoded = xm.renderer.render_views(
+  File "c:\users\nidis\documents\gen ai\text-to-3d-shap-e\shap-e\shap_e\models\nerstf\renderer.py", line 243, in render_views
+    output = render_views_from_stf(
+  File "c:\users\nidis\documents\gen ai\text-to-3d-shap-e\shap-e\shap_e\models\stf\renderer.py", line 217, in render_views_from_stf
+    raw_mesh = marching_cubes(field, volume.bbox_min, volume.bbox_max - volume.bbox_min)
+  File "c:\users\nidis\documents\gen ai\text-to-3d-shap-e\shap-e\shap_e\rendering\mc.py", line 93, in marching_cubes
+    selected_tris = global_tris.reshape(-1, 3)[local_masks.reshape(-1)]
+RuntimeError: Native API failed. Native API returns: 2147483646 (UR_RESULT_ERROR_UNKNOWN)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nidis\Documents\Gen AI\Text-to-3D-SHAP-E\backend\model.py", line 200, in generate_mesh
+    cpu_latent = latents[0].detach().clone().to(device=self.cpu_device, dtype=torch.float32)
+RuntimeError: UR error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nidis\Documents\Gen AI\Text-to-3D-SHAP-E\backend\model.py", line 220, in generate_mesh
+    raise RuntimeError(f"Failed to generate mesh on both primary device and CPU fallback: {str(cpu_error)}")
+RuntimeError: Failed to generate mesh on both primary device and CPU fallback: UR error
+
+2025-04-17 21:44:14,495 - ERROR - Error in main: Failed to generate mesh: Failed to generate mesh on both primary device and CPU fallback: UR error
+2025-04-17 21:44:14,496 - ERROR - Traceback (most recent call last):
+  File "C:\Users\nidis\Documents\Gen AI\Text-to-3D-SHAP-E\backend\model.py", line 179, in generate_mesh
+    decoded = decode_latent_mesh(self.xm, latent)
+  File "C:\Users\nidis\miniconda3\envs\env\lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "c:\users\nidis\documents\gen ai\text-to-3d-shap-e\shap-e\shap_e\util\notebooks.py", line 69, in decode_latent_mesh
+    decoded = xm.renderer.render_views(
+  File "c:\users\nidis\documents\gen ai\text-to-3d-shap-e\shap-e\shap_e\models\nerstf\renderer.py", line 243, in render_views
+    output = render_views_from_stf(
+  File "c:\users\nidis\documents\gen ai\text-to-3d-shap-e\shap-e\shap_e\models\stf\renderer.py", line 217, in render_views_from_stf
+    raw_mesh = marching_cubes(field, volume.bbox_min, volume.bbox_max - volume.bbox_min)
+  File "c:\users\nidis\documents\gen ai\text-to-3d-shap-e\shap-e\shap_e\rendering\mc.py", line 93, in marching_cubes
+    selected_tris = global_tris.reshape(-1, 3)[local_masks.reshape(-1)]
+RuntimeError: Native API failed. Native API returns: 2147483646 (UR_RESULT_ERROR_UNKNOWN)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nidis\Documents\Gen AI\Text-to-3D-SHAP-E\backend\model.py", line 200, in generate_mesh
+    cpu_latent = latents[0].detach().clone().to(device=self.cpu_device, dtype=torch.float32)
+RuntimeError: UR error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nidis\Documents\Gen AI\Text-to-3D-SHAP-E\backend\model.py", line 220, in generate_mesh
+    raise RuntimeError(f"Failed to generate mesh on both primary device and CPU fallback: {str(cpu_error)}")
+RuntimeError: Failed to generate mesh on both primary device and CPU fallback: UR error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nidis\Documents\Gen AI\Text-to-3D-SHAP-E\backend\model.py", line 239, in <module>
+    obj_path, ply_path = model.generate_mesh(test_prompt)
+  File "C:\Users\nidis\Documents\Gen AI\Text-to-3D-SHAP-E\backend\model.py", line 228, in generate_mesh
+    raise RuntimeError(f"Failed to generate mesh: {str(e)}")
+RuntimeError: Failed to generate mesh: Failed to generate mesh on both primary device and CPU fallback: UR error
+
+2025-04-17 22:02:06,381 - INFO - Initializing Text-to-3D model...
+2025-04-17 22:02:06,539 - INFO - Intel XPU detected, using XPU
+2025-04-17 22:02:06,539 - INFO - XPU device count: 1
+2025-04-17 22:02:06,548 - INFO - XPU:0 - Intel(R) Arc(TM) Graphics
+2025-04-17 22:02:06,549 - INFO - XPU:0 - Allocated memory: 0.00 GB
+2025-04-17 22:02:06,549 - INFO - XPU:0 - Reserved memory: 0.00 GB
+2025-04-17 22:02:06,549 - INFO - Loading models on xpu...
+2025-04-17 22:02:26,691 - INFO - Text300M model loaded successfully
+2025-04-17 22:02:26,691 - INFO - Loading diffusion process...
+2025-04-17 22:02:26,707 - INFO - Diffusion process loaded successfully
+2025-04-17 22:02:26,707 - INFO - Generating mesh...
+2025-04-17 22:02:26,707 - INFO - Generating mesh for prompt: 'a simple cube'
+2025-04-17 22:02:26,707 - INFO - Running on XPU - optimizing parameters
+2025-04-17 22:04:08,685 - INFO - Generating mesh on xpu
+2025-04-17 22:08:44,674 - INFO - Initializing Text-to-3D model...
+2025-04-17 22:08:44,867 - INFO - Intel XPU detected, using XPU
+2025-04-17 22:08:44,867 - INFO - XPU device count: 1
+2025-04-17 22:08:44,878 - INFO - XPU:0 - Intel(R) Arc(TM) Graphics
+2025-04-17 22:08:44,878 - INFO - XPU:0 - Allocated memory: 0.00 GB
+2025-04-17 22:08:44,878 - INFO - XPU:0 - Reserved memory: 0.00 GB
+2025-04-17 22:08:44,878 - INFO - Loading models on xpu...
+2025-04-17 22:09:04,646 - INFO - Text300M model loaded successfully
+2025-04-17 22:09:04,647 - INFO - Loading diffusion process...
+2025-04-17 22:09:04,652 - INFO - Diffusion process loaded successfully
+2025-04-17 22:09:04,652 - INFO - Generating mesh...
+2025-04-17 22:09:04,654 - INFO - Generating mesh for prompt: 'a simple cube'
+2025-04-17 22:09:04,654 - INFO - Running on XPU - optimizing parameters
+2025-04-17 22:10:50,443 - INFO - Generating mesh on xpu
+2025-04-17 22:31:43,511 - INFO - Initializing Text-to-3D model...
+2025-04-17 22:31:43,721 - INFO - Intel XPU detected, using XPU
+2025-04-17 22:31:43,727 - INFO - XPU device count: 1
+2025-04-17 22:31:43,734 - INFO - XPU:0 - Intel(R) Arc(TM) Graphics
+2025-04-17 22:31:43,734 - INFO - XPU:0 - Allocated memory: 0.00 GB
+2025-04-17 22:31:43,734 - INFO - XPU:0 - Reserved memory: 0.00 GB
+2025-04-17 22:31:43,734 - INFO - Loading models on xpu...
+2025-04-17 22:32:04,979 - INFO - Text300M model loaded successfully
+2025-04-17 22:32:04,982 - INFO - Loading diffusion process...
+2025-04-17 22:32:05,001 - INFO - Diffusion process loaded successfully
+2025-04-17 22:32:05,003 - INFO - Generating mesh...
+2025-04-17 22:32:05,003 - INFO - Generating mesh for prompt: 'a simple cube'
+2025-04-17 22:32:05,003 - INFO - Running on XPU - optimizing parameters
+2025-04-17 22:33:51,200 - INFO - Generating mesh on xpu
+2025-04-17 23:24:49,501 - INFO - Initializing Text-to-3D model...
+2025-04-17 23:24:49,735 - INFO - Intel XPU detected, using XPU
+2025-04-17 23:24:49,735 - INFO - XPU device count: 1
+2025-04-17 23:24:49,744 - INFO - XPU:0 - Intel(R) Arc(TM) Graphics
+2025-04-17 23:24:49,744 - INFO - XPU:0 - Allocated memory: 0.00 GB
+2025-04-17 23:24:49,744 - INFO - XPU:0 - Reserved memory: 0.00 GB
+2025-04-17 23:24:49,744 - INFO - Loading models on xpu...
+2025-04-17 23:25:12,638 - INFO - Text300M model loaded successfully
+2025-04-17 23:25:12,645 - INFO - Loading diffusion process...
+2025-04-17 23:25:12,672 - INFO - Diffusion process loaded successfully
+2025-04-17 23:25:12,674 - INFO - Generating mesh with memory optimization...
+2025-04-17 23:25:12,675 - INFO - Generating mesh for prompt: 'a simple cube'
+2025-04-17 23:25:12,675 - INFO - Running on XPU - optimizing parameters
+2025-04-17 23:25:12,793 - INFO - Cleared XPU cache before generation
+2025-04-17 23:27:00,187 - INFO - Generating mesh on xpu with memory optimization
+2025-04-17 23:27:00,731 - INFO - Cleared XPU cache before mesh decoding
+2025-04-17 23:27:00,731 - INFO - Using memory-optimized decoding approach for XPU
+2025-04-18 12:54:39,513 - INFO - Initializing Text-to-3D model...
+2025-04-18 12:54:39,767 - INFO - Intel XPU detected, using XPU
+2025-04-18 12:54:39,767 - INFO - XPU device count: 1
+2025-04-18 12:54:39,787 - INFO - XPU:0 - Intel(R) Arc(TM) Graphics
+2025-04-18 12:54:39,787 - INFO - XPU:0 - Allocated memory: 0.00 GB
+2025-04-18 12:54:39,787 - INFO - XPU:0 - Reserved memory: 0.00 GB
+2025-04-18 12:54:39,787 - INFO - Loading models on xpu...
+2025-04-18 12:54:58,473 - INFO - Text300M model loaded successfully
+2025-04-18 12:54:58,473 - INFO - Loading diffusion process...
+2025-04-18 12:54:58,495 - INFO - Diffusion process loaded successfully
+2025-04-18 12:54:58,495 - INFO - Generating mesh with memory optimization...
+2025-04-18 12:54:58,501 - INFO - Generating mesh for prompt: 'a simple cube'
+2025-04-18 12:54:58,501 - INFO - Running on XPU - optimizing parameters
+2025-04-18 12:54:58,598 - INFO - Cleared XPU cache before generation
+2025-04-18 12:56:35,359 - INFO - Generating mesh on xpu with memory optimization
+2025-04-18 12:56:35,539 - INFO - Cleared XPU cache before mesh decoding
+2025-04-18 12:56:35,539 - INFO - Using memory-optimized decoding approach for XPU
+2025-04-18 12:58:35,480 - INFO - Initializing Text-to-3D model...
+2025-04-18 12:58:35,689 - INFO - Intel XPU detected, using XPU
+2025-04-18 12:58:35,689 - INFO - XPU device count: 1
+2025-04-18 12:58:35,700 - INFO - XPU:0 - Intel(R) Arc(TM) Graphics
+2025-04-18 12:58:35,700 - INFO - XPU:0 - Allocated memory: 0.00 GB
+2025-04-18 12:58:35,700 - INFO - XPU:0 - Reserved memory: 0.00 GB
+2025-04-18 12:58:35,700 - INFO - Loading models on xpu...
+2025-04-18 12:58:53,817 - INFO - Text300M model loaded successfully
+2025-04-18 12:58:53,817 - INFO - Loading diffusion process...
+2025-04-18 12:58:53,817 - INFO - Diffusion process loaded successfully
+2025-04-18 12:58:53,817 - INFO - Generating mesh with memory optimization...
+2025-04-18 12:58:53,817 - INFO - Generating mesh for prompt: 'a simple cube'
+2025-04-18 12:58:53,817 - INFO - Running on XPU - optimizing parameters
+2025-04-18 12:58:53,948 - INFO - Cleared XPU cache before generation
+2025-04-18 13:00:20,769 - INFO - Generating mesh on xpu with memory optimization
+2025-04-18 13:00:20,930 - INFO - Cleared XPU cache before mesh decoding
+2025-04-18 13:00:20,930 - INFO - Using memory-optimized decoding approach for XPU
+2025-04-18 13:03:17,313 - INFO - Initializing Text-to-3D model...
+2025-04-18 13:03:17,554 - INFO - Intel XPU detected, using XPU
+2025-04-18 13:03:17,554 - INFO - XPU device count: 1
+2025-04-18 13:03:17,569 - INFO - XPU:0 - Intel(R) Arc(TM) Graphics
+2025-04-18 13:03:17,569 - INFO - XPU:0 - Allocated memory: 0.00 GB
+2025-04-18 13:03:17,569 - INFO - XPU:0 - Reserved memory: 0.00 GB
+2025-04-18 13:03:17,569 - INFO - Loading models on xpu...
+2025-04-18 13:03:36,215 - INFO - Text300M model loaded successfully
+2025-04-18 13:03:36,215 - INFO - Loading diffusion process...
+2025-04-18 13:03:36,242 - INFO - Diffusion process loaded successfully
+2025-04-18 13:03:36,242 - INFO - Generating 3D mesh for prompt: 'a simple cube'
+2025-04-18 13:03:36,243 - INFO - Generating mesh with memory optimization...
+2025-04-18 13:03:36,243 - INFO - Generating mesh for prompt: 'a simple cube'
+2025-04-18 13:03:36,243 - INFO - Running on XPU - optimizing parameters
+2025-04-18 13:03:36,353 - INFO - Cleared XPU cache before generation
+2025-04-18 13:05:03,008 - INFO - Generating mesh on xpu with memory optimization
+2025-04-18 13:05:03,181 - INFO - Cleared XPU cache before mesh decoding
+2025-04-18 13:05:03,181 - INFO - Using memory-optimized decoding approach for XPU
